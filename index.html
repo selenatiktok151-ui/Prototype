@@ -1,0 +1,787 @@
+<!DOCTYPE html>
+<html lang="id" class="dark scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Azeez Web Studio — Website Profesional untuk Bisnis Modern</title>
+    
+    <!-- Google Fonts: Manrope -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS CDNs -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Manrope', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            50: '#f5f3ff',
+                            100: '#ede9fe',
+                            200: '#ddd6fe',
+                            300: '#c4b5fd',
+                            400: '#a78bfa',
+                            500: '#8b5cf6',
+                            600: '#7c3aed', // Primary
+                            700: '#6d28d9',
+                            800: '#5b21b6',
+                            900: '#4c1d95',
+                            950: '#2e1065',
+                        },
+                        darkbg: '#09080E',
+                        darkcard: 'rgba(255, 255, 255, 0.03)',
+                        darkborder: 'rgba(255, 255, 255, 0.08)',
+                    },
+                    animation: {
+                        'pulse-slow': 'pulse 6s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                        'float': 'float 6s ease-in-out infinite',
+                        'glow': 'glow 4s ease-in-out infinite alternate',
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0px)' },
+                            '50%': { transform: 'translateY(-10px)' },
+                        },
+                        glow: {
+                            '0%': { opacity: '0.4', filter: 'blur(40px)' },
+                            '100%': { opacity: '0.8', filter: 'blur(60px)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <style>
+        body {
+            font-family: 'Manrope', sans-serif;
+            background-color: #09080E;
+            color: #f3f4f6;
+            overflow-x: hidden;
+        }
+
+        /* Subtle SaaS Vector Grid Pattern */
+        .bg-grid-pattern {
+            background-size: 40px 40px;
+            background-image: 
+                linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+        }
+
+        /* Mesh Radial Glow Backdrops */
+        .glow-orb {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(90px);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        /* Subtle Noise Simulation Overlay */
+        .noise-bg {
+            background-image: radial-gradient(rgba(124, 58, 237, 0.12) 1px, transparent 0);
+            background-size: 24px 24px;
+        }
+
+        /* Glassmorphism Card Style */
+        .glass-card {
+            background: rgba(255, 255, 255, 0.025);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.07);
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .glass-card:hover {
+            border-color: rgba(124, 58, 237, 0.4);
+            box-shadow: 0 0 30px -5px rgba(124, 58, 237, 0.25);
+            transform: translateY(-4px);
+        }
+
+        /* Glowing Button Styles */
+        .btn-primary-glow {
+            background: linear-gradient(135deg, #8b5cf6 0%, #7c3aed 50%, #6d28d9 100%);
+            box-shadow: 0 0 20px rgba(124, 58, 237, 0.4);
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary-glow:hover {
+            box-shadow: 0 0 35px rgba(124, 58, 237, 0.7);
+            transform: translateY(-2px);
+        }
+
+        /* Fade Up Interactivity */
+        .fade-in-up {
+            opacity: 0;
+            transform: translateY(24px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+
+        .fade-in-up.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #09080E;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #2a2838;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #7c3aed;
+        }
+    </style>
+</head>
+<body class="bg-[#09080E] text-slate-100 antialiased selection:bg-brand-600 selection:text-white relative">
+
+    <!-- Background Vector Lighting & Grid Mesh -->
+    <div class="fixed inset-0 pointer-events-none z-0 overflow-hidden">
+        <div class="absolute inset-0 bg-grid-pattern opacity-60"></div>
+        <div class="absolute inset-0 noise-bg opacity-40"></div>
+        
+        <!-- Glowing Orbs -->
+        <div class="glow-orb w-[600px] h-[600px] bg-brand-600/20 top-[-100px] left-1/2 -translate-x-1/2 animate-pulse-slow"></div>
+        <div class="glow-orb w-[500px] h-[500px] bg-purple-900/20 top-[40%] -left-[150px]"></div>
+        <div class="glow-orb w-[600px] h-[600px] bg-indigo-900/15 bottom-[10%] -right-[150px]"></div>
+    </div>
+
+    <!-- Header / Navbar -->
+    <header class="sticky top-0 z-50 backdrop-blur-xl bg-[#09080E]/70 border-b border-white/[0.08] transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <!-- Brand Logo -->
+            <a href="#" class="flex items-center gap-3 group focus:outline-none">
+                <div class="relative w-10 h-10 flex items-center justify-center rounded-xl bg-brand-600/10 border border-brand-500/30 group-hover:border-brand-500/60 transition-all duration-300">
+                    <svg class="w-7 h-7 transform group-hover:scale-105 transition-transform duration-300" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <defs>
+                            <linearGradient id="navLogoGrad" x1="20" y1="20" x2="180" y2="180" gradientUnits="userSpaceOnUse">
+                                <stop offset="0%" stop-color="#E9D5FF" />
+                                <stop offset="35%" stop-color="#A855F7" />
+                                <stop offset="70%" stop-color="#7C3AED" />
+                                <stop offset="100%" stop-color="#4C1D95" />
+                            </linearGradient>
+                        </defs>
+                        <!-- Exact Rounded Chevron Logo matching reference image -->
+                        <path d="M 52 152 L 91 46 C 95 36 105 36 109 46 L 148 152" fill="none" stroke="url(#navLogoGrad)" stroke-width="30" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </div>
+                <div class="flex flex-col">
+                    <span class="font-bold text-lg tracking-tight text-white group-hover:text-brand-300 transition-colors">Azeez Web Studio</span>
+                </div>
+            </a>
+
+            <!-- Navigation Links -->
+            <nav class="hidden md:flex items-center space-x-8 text-sm font-medium text-slate-300">
+                <a href="#layanan" class="hover:text-white transition-colors">Layanan</a>
+                <a href="#keunggulan" class="hover:text-white transition-colors">Keunggulan</a>
+                <a href="#cara-kerja" class="hover:text-white transition-colors">Cara Kerja</a>
+                <a href="#faq" class="hover:text-white transition-colors">FAQ</a>
+            </nav>
+
+            <!-- Navbar Buttons -->
+            <div class="flex items-center space-x-3">
+                <a href="https://www.instagram.com/azeezwebstudio?igsh=MmNpcG82bGdqY2g1" target="_blank" rel="noopener noreferrer" 
+                   aria-label="Instagram Azeez Web Studio"
+                   class="w-10 h-10 rounded-full glass-card border border-white/10 hover:border-brand-500/50 flex items-center justify-center text-slate-300 hover:text-white transition-all duration-300 group">
+                    <svg class="w-5 h-5 text-brand-400 group-hover:scale-110 transition-transform" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                    </svg>
+                </a>
+                <a href="https://wa.me/6285175415580" target="_blank" rel="noopener noreferrer" 
+                   class="btn-primary-glow text-white text-sm font-semibold px-5 py-2.5 rounded-full flex items-center gap-2 group">
+                    <span>Konsultasi Gratis</span>
+                    <svg class="w-4 h-4 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
+                    </svg>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="relative pt-16 pb-24 lg:pt-28 lg:pb-36 overflow-hidden z-10">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative">
+            
+            <!-- Badge -->
+            <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full glass-card text-xs sm:text-sm font-medium text-brand-300 mb-8 fade-in-up border border-brand-500/20">
+                <span class="flex h-2 w-2 rounded-full bg-brand-400 animate-ping"></span>
+                <span class="tracking-wide">STUDIO PENGEMBANGAN WEBSITE MODERN</span>
+            </div>
+
+            <!-- Prominent Vector Logo Display -->
+            <div class="flex justify-center mb-10 fade-in-up">
+                <div class="relative p-6 rounded-3xl bg-white/[0.02] border border-white/10 backdrop-blur-2xl shadow-2xl group hover:border-brand-500/40 transition-all duration-500">
+                    <div class="absolute inset-0 rounded-3xl bg-brand-600/20 blur-xl opacity-50 group-hover:opacity-80 transition-opacity"></div>
+                    
+                    <svg class="w-24 h-24 sm:w-32 sm:h-32 relative z-10 transform group-hover:scale-105 transition-transform duration-500" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <defs>
+                            <linearGradient id="heroLogoGrad" x1="20" y1="20" x2="180" y2="180" gradientUnits="userSpaceOnUse">
+                                <stop offset="0%" stop-color="#E9D5FF" />
+                                <stop offset="30%" stop-color="#A855F7" />
+                                <stop offset="70%" stop-color="#7C3AED" />
+                                <stop offset="100%" stop-color="#4C1D95" />
+                            </linearGradient>
+                            <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+                                <feGaussianBlur stdDeviation="6" result="blur" />
+                                <feComposite in="SourceGraphic" in2="blur" operator="over" />
+                            </filter>
+                        </defs>
+                        <!-- Premium Exact Chevron Arc Vector Logo -->
+                        <path d="M 52 152 L 91 46 C 95 36 105 36 109 46 L 148 152" fill="none" stroke="url(#heroLogoGrad)" stroke-width="30" stroke-linecap="round" stroke-linejoin="round" filter="url(#glow)"/>
+                    </svg>
+                </div>
+            </div>
+
+            <!-- Headline -->
+            <h1 class="text-4xl sm:text-6xl lg:text-7xl font-extrabold tracking-tight text-white mb-6 leading-[1.15] fade-in-up">
+                Professional Website<br>
+                <span class="bg-clip-text text-transparent bg-gradient-to-r from-white via-brand-200 to-brand-500">
+                    for Modern Business
+                </span>
+            </h1>
+
+            <!-- Description -->
+            <p class="text-base sm:text-lg lg:text-xl text-slate-300 max-w-2xl mx-auto mb-10 leading-relaxed font-normal fade-in-up">
+                Kami membantu membuat website modern, profesional, dan mudah digunakan agar bisnis Anda tampil lebih terpercaya secara online.
+            </p>
+
+            <!-- Buttons -->
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-4 fade-in-up">
+                <a href="https://wa.me/6285175415580" target="_blank" rel="noopener noreferrer" 
+                   class="w-full sm:w-auto btn-primary-glow text-white text-base font-semibold px-8 py-4 rounded-full flex items-center justify-center gap-3 group">
+                    <span>Konsultasi Gratis</span>
+                    <svg class="w-5 h-5 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
+                    </svg>
+                </a>
+                <a href="https://wa.me/6285175415580" target="_blank" rel="noopener noreferrer" 
+                   class="w-full sm:w-auto glass-card hover:bg-white/[0.06] text-white text-base font-semibold px-8 py-4 rounded-full border border-white/10 flex items-center justify-center gap-2">
+                    <span>Lihat Layanan</span>
+                </a>
+            </div>
+
+            <!-- Minimalist Tech Badges -->
+            <div class="mt-20 pt-10 border-t border-white/[0.06] flex flex-wrap justify-center items-center gap-8 sm:gap-12 text-slate-400 text-xs sm:text-sm font-medium uppercase tracking-widest fade-in-up">
+                <span class="hover:text-slate-200 transition-colors">Ultra Fast Loading</span>
+                <span class="text-white/20">•</span>
+                <span class="hover:text-slate-200 transition-colors">Responsive Design</span>
+                <span class="text-white/20">•</span>
+                <span class="hover:text-slate-200 transition-colors">SEO Optimized</span>
+                <span class="text-white/20">•</span>
+                <span class="hover:text-slate-200 transition-colors">High Conversion</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="layanan" class="py-24 relative z-10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16 fade-in-up">
+                <h2 class="text-xs font-bold tracking-widest text-brand-400 uppercase mb-3">LAYANAN KAMI</h2>
+                <p class="text-3xl sm:text-4xl font-bold text-white tracking-tight">Solusi Website Premium untuk Perkembangan Bisnis Anda</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                
+                <!-- Service 1: Landing Page -->
+                <div class="glass-card p-8 rounded-3xl relative flex flex-col justify-between group fade-in-up">
+                    <div>
+                        <!-- Icon -->
+                        <div class="w-14 h-14 rounded-2xl bg-brand-600/10 border border-brand-500/20 flex items-center justify-center text-brand-400 mb-6 group-hover:scale-110 group-hover:bg-brand-600/20 transition-all duration-300">
+                            <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M13 10V3L4 14h7v7l9-11h-7z"/>
+                            </svg>
+                        </div>
+                        <h3 class="text-2xl font-bold text-white mb-3">Landing Page</h3>
+                        <p class="text-slate-300 text-sm leading-relaxed mb-6">
+                            Website satu halaman fokus konversi tinggi. Sangat cocok untuk campaign produk, promosi event, penawaran jasa khusus, dan lead generation.
+                        </p>
+                    </div>
+                    <div>
+                        <ul class="space-y-3 mb-8 text-xs text-slate-300">
+                            <li class="flex items-center gap-2">
+                                <svg class="w-4 h-4 text-brand-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                                Desain Eksklusif & Fokus Konversi
+                            </li>
+                            <li class="flex items-center gap-2">
+                                <svg class="w-4 h-4 text-brand-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                                Integrasi Langsung ke WhatsApp
+                            </li>
+                            <li class="flex items-center gap-2">
+                                <svg class="w-4 h-4 text-brand-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                                Optimasi Kecepatan & Mobile Friendly
+                            </li>
+                        </ul>
+                        <a href="https://wa.me/6285175415580" target="_blank" rel="noopener noreferrer" class="w-full py-3 px-4 rounded-xl bg-white/[0.05] hover:bg-brand-600 text-white text-xs font-semibold flex items-center justify-center gap-2 transition-colors">
+                            <span>Konsultasi Landing Page</span>
+                            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Service 2: Website Bisnis -->
+                <div class="glass-card p-8 rounded-3xl relative flex flex-col justify-between group border-brand-500/30 shadow-lg shadow-brand-600/10 fade-in-up">
+                    <div class="absolute -top-3 right-6 bg-brand-600 text-white text-[10px] font-bold uppercase tracking-wider px-3 py-1 rounded-full">
+                        Populer
+                    </div>
+                    <div>
+                        <!-- Icon -->
+                        <div class="w-14 h-14 rounded-2xl bg-brand-600/20 border border-brand-500/40 flex items-center justify-center text-brand-300 mb-6 group-hover:scale-110 group-hover:bg-brand-600/30 transition-all duration-300">
+                            <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/>
+                            </svg>
+                        </div>
+                        <h3 class="text-2xl font-bold text-white mb-3">Website Bisnis</h3>
+                        <p class="text-slate-300 text-sm leading-relaxed mb-6">
+                            Company profile lengkap yang elegan dan profesional untuk membangun kepercayaan calon klien, memperkuat kredibilitas, dan meningkatkan reputasi brand.
+                        </p>
+                    </div>
+                    <div>
+                        <ul class="space-y-3 mb-8 text-xs text-slate-300">
+                            <li class="flex items-center gap-2">
+                                <svg class="w-4 h-4 text-brand-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                                Multi-halaman (Home, About, Services, Contact)
+                            </li>
+                            <li class="flex items-center gap-2">
+                                <svg class="w-4 h-4 text-brand-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                                SEO Dasar & Terdaftar di Google
+                            </li>
+                            <li class="flex items-center gap-2">
+                                <svg class="w-4 h-4 text-brand-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                                Domain .com / .co.id & Email Bisnis
+                            </li>
+                        </ul>
+                        <a href="https://wa.me/6285175415580" target="_blank" rel="noopener noreferrer" class="w-full py-3 px-4 rounded-xl btn-primary-glow text-white text-xs font-semibold flex items-center justify-center gap-2">
+                            <span>Konsultasi Website Bisnis</span>
+                            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Service 3: Website Custom -->
+                <div class="glass-card p-8 rounded-3xl relative flex flex-col justify-between group fade-in-up">
+                    <div>
+                        <!-- Icon -->
+                        <div class="w-14 h-14 rounded-2xl bg-brand-600/10 border border-brand-500/20 flex items-center justify-center text-brand-400 mb-6 group-hover:scale-110 group-hover:bg-brand-600/20 transition-all duration-300">
+                            <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"/>
+                            </svg>
+                        </div>
+                        <h3 class="text-2xl font-bold text-white mb-3">Website Custom</h3>
+                        <p class="text-slate-300 text-sm leading-relaxed mb-6">
+                            Solusi web dinamis dengan fitur khusus sesuai kebutuhan spesifik usaha Anda. Ideal untuk portal berita, katalog produk khusus, atau aplikasi web terintegrasi.
+                        </p>
+                    </div>
+                    <div>
+                        <ul class="space-y-3 mb-8 text-xs text-slate-300">
+                            <li class="flex items-center gap-2">
+                                <svg class="w-4 h-4 text-brand-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                                Sistem CMS & Fitur Khusus Tailor-Made
+                            </li>
+                            <li class="flex items-center gap-2">
+                                <svg class="w-4 h-4 text-brand-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                                Interaksi & Arsitektur Fleksibel
+                            </li>
+                            <li class="flex items-center gap-2">
+                                <svg class="w-4 h-4 text-brand-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                                Scalable & Dukungan Penuh
+                            </li>
+                        </ul>
+                        <a href="https://wa.me/6285175415580" target="_blank" rel="noopener noreferrer" class="w-full py-3 px-4 rounded-xl bg-white/[0.05] hover:bg-brand-600 text-white text-xs font-semibold flex items-center justify-center gap-2 transition-colors">
+                            <span>Diskusi Website Custom</span>
+                            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Choose Us Section -->
+    <section id="keunggulan" class="py-24 relative z-10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16 fade-in-up">
+                <h2 class="text-xs font-bold tracking-widest text-brand-400 uppercase mb-3">MENGAPA MEMILIH KAMI</h2>
+                <p class="text-3xl sm:text-4xl font-bold text-white tracking-tight">Kualitas Standar Startup Global dengan Pendekatan Personal</p>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                
+                <!-- Item 1: Modern Design -->
+                <div class="glass-card p-6 rounded-2xl border border-white/[0.06] fade-in-up">
+                    <div class="w-12 h-12 rounded-xl bg-brand-600/10 flex items-center justify-center text-brand-400 mb-5">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-23"/>
+                        </svg>
+                    </div>
+                    <h3 class="text-lg font-bold text-white mb-2">Modern Design</h3>
+                    <p class="text-slate-400 text-sm leading-relaxed">
+                        Desain estetik, bersih, dan berstandar internasional yang mencerminkan profesionalitas brand Anda.
+                    </p>
+                </div>
+
+                <!-- Item 2: Responsive -->
+                <div class="glass-card p-6 rounded-2xl border border-white/[0.06] fade-in-up">
+                    <div class="w-12 h-12 rounded-xl bg-brand-600/10 flex items-center justify-center text-brand-400 mb-5">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 18h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z"/>
+                        </svg>
+                    </div>
+                    <h3 class="text-lg font-bold text-white mb-2">Responsive</h3>
+                    <p class="text-slate-400 text-sm leading-relaxed">
+                        Tampilan sempurna dan nyaman diakses dari smartphone, tablet, maupun layar desktop.
+                    </p>
+                </div>
+
+                <!-- Item 3: Fast Loading -->
+                <div class="glass-card p-6 rounded-2xl border border-white/[0.06] fade-in-up">
+                    <div class="w-12 h-12 rounded-xl bg-brand-600/10 flex items-center justify-center text-brand-400 mb-5">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M13 10V3L4 14h7v7l9-11h-7z"/>
+                        </svg>
+                    </div>
+                    <h3 class="text-lg font-bold text-white mb-2">Fast Loading</h3>
+                    <p class="text-slate-400 text-sm leading-relaxed">
+                        Performa kecepatan tinggi agar pengunjung tidak meninggalkan website Anda karena waktu muat yang lambat.
+                    </p>
+                </div>
+
+                <!-- Item 4: Easy Communication -->
+                <div class="glass-card p-6 rounded-2xl border border-white/[0.06] fade-in-up">
+                    <div class="w-12 h-12 rounded-xl bg-brand-600/10 flex items-center justify-center text-brand-400 mb-5">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/>
+                        </svg>
+                    </div>
+                    <h3 class="text-lg font-bold text-white mb-2">Easy Communication</h3>
+                    <p class="text-slate-400 text-sm leading-relaxed">
+                        Komunikasi ramah, cepat tanggap, dan transparan dalam setiap proses pengerjaan.
+                    </p>
+                </div>
+
+                <!-- Item 5: Affordable -->
+                <div class="glass-card p-6 rounded-2xl border border-white/[0.06] fade-in-up">
+                    <div class="w-12 h-12 rounded-xl bg-brand-600/10 flex items-center justify-center text-brand-400 mb-5">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                        </svg>
+                    </div>
+                    <h3 class="text-lg font-bold text-white mb-2">Affordable</h3>
+                    <p class="text-slate-400 text-sm leading-relaxed">
+                        Penawaran harga rasional, fleksibel, dan transparan sesuai dengan nilai yang Anda dapatkan.
+                    </p>
+                </div>
+
+                <!-- Item 6: Free Consultation -->
+                <div class="glass-card p-6 rounded-2xl border border-white/[0.06] fade-in-up">
+                    <div class="w-12 h-12 rounded-xl bg-brand-600/10 flex items-center justify-center text-brand-400 mb-5">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
+                        </svg>
+                    </div>
+                    <h3 class="text-lg font-bold text-white mb-2">Free Consultation</h3>
+                    <p class="text-slate-400 text-sm leading-relaxed">
+                        Konsultasikan konsep dan kebutuhan website Anda terlebih dahulu tanpa biaya sama sekali.
+                    </p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works Section -->
+    <section id="cara-kerja" class="py-24 relative z-10 border-t border-white/[0.06]">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-20 fade-in-up">
+                <h2 class="text-xs font-bold tracking-widest text-brand-400 uppercase mb-3">CARA KERJA</h2>
+                <p class="text-3xl sm:text-4xl font-bold text-white tracking-tight">5 Langkah Mudah Memiliki Website Impian</p>
+            </div>
+
+            <!-- Timeline Cards Grid with Arrows -->
+            <div class="relative">
+                <div class="grid grid-cols-1 md:grid-cols-5 gap-4 relative z-10">
+                    
+                    <!-- Step 1 -->
+                    <div class="glass-card p-6 rounded-2xl text-center relative flex flex-col items-center fade-in-up">
+                        <div class="w-10 h-10 rounded-full bg-brand-600 text-white font-bold text-sm flex items-center justify-center mb-4 shadow-lg shadow-brand-600/40">
+                            1
+                        </div>
+                        <h3 class="text-lg font-bold text-white mb-2">Contact</h3>
+                        <p class="text-slate-400 text-xs leading-relaxed">
+                            Hubungi kami melalui WhatsApp untuk memulai obrolan awal.
+                        </p>
+                    </div>
+
+                    <!-- Step 2 -->
+                    <div class="glass-card p-6 rounded-2xl text-center relative flex flex-col items-center fade-in-up">
+                        <div class="w-10 h-10 rounded-full bg-brand-600/30 border border-brand-500/50 text-brand-300 font-bold text-sm flex items-center justify-center mb-4">
+                            2
+                        </div>
+                        <h3 class="text-lg font-bold text-white mb-2">Discussion</h3>
+                        <p class="text-slate-400 text-xs leading-relaxed">
+                            Diskusi detail mengenai struktur, referensi, & penawaran.
+                        </p>
+                    </div>
+
+                    <!-- Step 3 -->
+                    <div class="glass-card p-6 rounded-2xl text-center relative flex flex-col items-center fade-in-up">
+                        <div class="w-10 h-10 rounded-full bg-brand-600/30 border border-brand-500/50 text-brand-300 font-bold text-sm flex items-center justify-center mb-4">
+                            3
+                        </div>
+                        <h3 class="text-lg font-bold text-white mb-2">Development</h3>
+                        <p class="text-slate-400 text-xs leading-relaxed">
+                            Proses perancangan visual & pengkodean website profesional.
+                        </p>
+                    </div>
+
+                    <!-- Step 4 -->
+                    <div class="glass-card p-6 rounded-2xl text-center relative flex flex-col items-center fade-in-up">
+                        <div class="w-10 h-10 rounded-full bg-brand-600/30 border border-brand-500/50 text-brand-300 font-bold text-sm flex items-center justify-center mb-4">
+                            4
+                        </div>
+                        <h3 class="text-lg font-bold text-white mb-2">Revision</h3>
+                        <p class="text-slate-400 text-xs leading-relaxed">
+                            Review hasil website & penyempurnaan sesuai masukan Anda.
+                        </p>
+                    </div>
+
+                    <!-- Step 5 -->
+                    <div class="glass-card p-6 rounded-2xl text-center relative flex flex-col items-center fade-in-up">
+                        <div class="w-10 h-10 rounded-full bg-emerald-500/20 border border-emerald-500/50 text-emerald-400 font-bold text-sm flex items-center justify-center mb-4">
+                            5
+                        </div>
+                        <h3 class="text-lg font-bold text-white mb-2">Finish</h3>
+                        <p class="text-slate-400 text-xs leading-relaxed">
+                            Website resmi mengudara & siap mendatangkan bisnis!
+                        </p>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section id="faq" class="py-24 relative z-10 border-t border-white/[0.06]">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 fade-in-up">
+                <h2 class="text-xs font-bold tracking-widest text-brand-400 uppercase mb-3">PERTANYAAN UMUM</h2>
+                <p class="text-3xl sm:text-4xl font-bold text-white tracking-tight">Frequently Asked Questions</p>
+            </div>
+
+            <div class="space-y-4 fade-in-up">
+                
+                <!-- FAQ item 1 -->
+                <div class="glass-card rounded-2xl border border-white/[0.06] overflow-hidden">
+                    <button class="faq-btn w-full p-6 text-left font-semibold text-base text-white flex justify-between items-center focus:outline-none">
+                        <span>Berapa lama proses pengerjaan pembuatan website?</span>
+                        <svg class="faq-icon w-5 h-5 text-brand-400 transform transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                        </svg>
+                    </button>
+                    <div class="faq-content max-h-0 overflow-hidden transition-all duration-300 px-6 opacity-0">
+                        <p class="text-slate-400 text-sm pb-6 leading-relaxed">
+                            Waktu pengerjaan bervariasi tergantung jenis proyek. Untuk Landing Page biasanya membutuhkan waktu 3–5 hari kerja, sedangkan Website Bisnis atau Custom membutuhkan waktu 7–14 hari kerja setelah materi lengkap.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- FAQ item 2 -->
+                <div class="glass-card rounded-2xl border border-white/[0.06] overflow-hidden">
+                    <button class="faq-btn w-full p-6 text-left font-semibold text-base text-white flex justify-between items-center focus:outline-none">
+                        <span>Apakah website yang dibuat bisa diakses dengan baik di HP?</span>
+                        <svg class="faq-icon w-5 h-5 text-brand-400 transform transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                        </svg>
+                    </button>
+                    <div class="faq-content max-h-0 overflow-hidden transition-all duration-300 px-6 opacity-0">
+                        <p class="text-slate-400 text-sm pb-6 leading-relaxed">
+                            Tentu saja. Semua website buatan Azeez Web Studio bersifat 100% responsive, artinya tampilan otomatis menyesuaikan ukuran layar HP, tablet, maupun laptop dengan optimal.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- FAQ item 3 -->
+                <div class="glass-card rounded-2xl border border-white/[0.06] overflow-hidden">
+                    <button class="faq-btn w-full p-6 text-left font-semibold text-base text-white flex justify-between items-center focus:outline-none">
+                        <span>Bagaimana jika saya belum memiliki domain dan hosting?</span>
+                        <svg class="faq-icon w-5 h-5 text-brand-400 transform transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                        </svg>
+                    </button>
+                    <div class="faq-content max-h-0 overflow-hidden transition-all duration-300 px-6 opacity-0">
+                        <p class="text-slate-400 text-sm pb-6 leading-relaxed">
+                            Jangan khawatir, kami bantu proses konsultasi dan setup domain (.com / .co.id) serta konfigurasi hosting hingga website siap pakai online tanpa ribet.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- FAQ item 4 -->
+                <div class="glass-card rounded-2xl border border-white/[0.06] overflow-hidden">
+                    <button class="faq-btn w-full p-6 text-left font-semibold text-base text-white flex justify-between items-center focus:outline-none">
+                        <span>Apakah ada revisi jika ada bagian yang ingin disesuaikan?</span>
+                        <svg class="faq-icon w-5 h-5 text-brand-400 transform transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                        </svg>
+                    </button>
+                    <div class="faq-content max-h-0 overflow-hidden transition-all duration-300 px-6 opacity-0">
+                        <p class="text-slate-400 text-sm pb-6 leading-relaxed">
+                            Ya, kami menyediakan garansi revisi sesuai dengan ruang lingkup proyek yang disepakati untuk memastikan hasil akhir memuaskan Anda.
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Final CTA Section -->
+    <section class="py-20 relative z-10">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="glass-card p-10 sm:p-16 rounded-3xl text-center relative overflow-hidden border border-brand-500/30 shadow-2xl fade-in-up">
+                <!-- Inner mesh glow effect -->
+                <div class="absolute inset-0 bg-gradient-to-r from-brand-600/20 via-purple-600/10 to-indigo-600/20 pointer-events-none"></div>
+                <div class="glow-orb w-80 h-80 bg-brand-500/30 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"></div>
+                
+                <div class="relative z-10">
+                    <h2 class="text-3xl sm:text-5xl font-extrabold text-white tracking-tight mb-6">
+                        Ready to Build Your Website?
+                    </h2>
+                    <p class="text-base sm:text-lg text-slate-300 max-w-xl mx-auto mb-10 leading-relaxed">
+                        Tingkatkan citra dan kredibilitas bisnis Anda sekarang dengan website modern berstandar tinggi.
+                    </p>
+                    <a href="https://wa.me/6285175415580" target="_blank" rel="noopener noreferrer" 
+                       class="inline-flex items-center gap-3 btn-primary-glow text-white text-lg font-bold px-10 py-5 rounded-full shadow-2xl transition-all duration-300 transform hover:scale-105">
+                        <span>Konsultasi Sekarang via WhatsApp</span>
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="border-t border-white/[0.08] bg-[#06050A] relative z-10 pt-16 pb-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-8 mb-12 pb-12 border-b border-white/[0.06]">
+                
+                <!-- Logo & Brand Name -->
+                <div class="flex items-center gap-3">
+                    <div class="w-10 h-10 rounded-xl bg-brand-600/10 border border-brand-500/30 flex items-center justify-center">
+                        <svg class="w-7 h-7" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <defs>
+                                <linearGradient id="footerLogoGrad" x1="20" y1="20" x2="180" y2="180" gradientUnits="userSpaceOnUse">
+                                    <stop offset="0%" stop-color="#E9D5FF" />
+                                    <stop offset="40%" stop-color="#A855F7" />
+                                    <stop offset="100%" stop-color="#6D28D9" />
+                                </linearGradient>
+                            </defs>
+                            <path d="M 52 152 L 91 46 C 95 36 105 36 109 46 L 148 152" fill="none" stroke="url(#footerLogoGrad)" stroke-width="30" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </div>
+                    <div>
+                        <span class="font-bold text-lg text-white tracking-tight">Azeez Web Studio</span>
+                        <p class="text-xs text-slate-300">Modern Digital Website Studio</p>
+                    </div>
+                </div>
+
+                <!-- Footer Navigation -->
+                <div class="flex flex-wrap gap-6 text-sm text-slate-300 font-medium">
+                    <a href="#layanan" class="hover:text-white transition-colors">Layanan</a>
+                    <a href="#keunggulan" class="hover:text-white transition-colors">Keunggulan</a>
+                    <a href="#cara-kerja" class="hover:text-white transition-colors">Cara Kerja</a>
+                    <a href="#faq" class="hover:text-white transition-colors">FAQ</a>
+                </div>
+
+                <!-- Contact Info & Socials -->
+                <div class="flex flex-col sm:flex-row items-start sm:items-center gap-4">
+                    <a href="mailto:hello@azeezwebstudio.com" class="flex items-center gap-2 text-sm text-slate-300 hover:text-brand-300 transition-colors">
+                        <svg class="w-4 h-4 text-brand-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+                        </svg>
+                        <span class="font-medium">hello@azeezwebstudio.com</span>
+                    </a>
+                    <a href="https://www.instagram.com/azeezwebstudio?igsh=MmNpcG82bGdqY2g1" target="_blank" rel="noopener noreferrer" 
+                       class="flex items-center gap-2 text-sm text-slate-300 hover:text-brand-300 transition-colors px-3 py-1.5 rounded-full glass-card border border-white/10 hover:border-brand-500/40">
+                        <svg class="w-4 h-4 text-brand-400" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                        </svg>
+                        <span class="font-medium">@azeezwebstudio</span>
+                    </a>
+                </div>
+            </div>
+
+            <div class="flex flex-col sm:flex-row justify-between items-center text-xs text-slate-400 gap-4">
+                <p>&copy; 2026 Azeez Web Studio. All rights reserved.</p>
+                <p class="text-slate-400">Website Modern, Profesional & Terpercaya.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Interactivity JavaScript -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Fade Up Animation on Scroll
+            const fadeElements = document.querySelectorAll('.fade-in-up');
+            
+            const observerOptions = {
+                root: null,
+                rootMargin: '0px',
+                threshold: 0.15
+            };
+
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, observerOptions);
+
+            fadeElements.forEach(el => observer.observe(el));
+
+            // FAQ Accordion Logic
+            const faqButtons = document.querySelectorAll('.faq-btn');
+
+            faqButtons.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    const content = btn.nextElementSibling;
+                    const icon = btn.querySelector('.faq-icon');
+                    const isOpen = content.style.maxHeight && content.style.maxHeight !== '0px';
+
+                    // Close all active accordions
+                    document.querySelectorAll('.faq-content').forEach(c => {
+                        c.style.maxHeight = '0px';
+                        c.style.opacity = '0';
+                    });
+                    document.querySelectorAll('.faq-icon').forEach(i => {
+                        i.classList.remove('rotate-180');
+                    });
+
+                    // Toggle current
+                    if (!isOpen) {
+                        content.style.maxHeight = content.scrollHeight + 'px';
+                        content.style.opacity = '1';
+                        icon.classList.add('rotate-180');
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
